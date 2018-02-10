@@ -7,3 +7,13 @@ export function selectBook(book) {
     payload: book
   };
 }
+
+export function addBook(book = null) {
+  console.log('adding');
+  console.log('book', book)
+
+  return {
+    type: 'ADD_BOOK',
+    payload: book
+  };
+}

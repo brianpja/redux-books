@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import BookList from '../containers/book-list';
 import BookDetail from '../containers/book-detail';
+import AddBook from '../containers/add-book';
+
+
 
 export default class App extends Component {
   render() {
@@ -9,6 +12,7 @@ export default class App extends Component {
       <div>
         <div>Brian is smart</div>
         <BookList />
+        <AddBook />
         <BookDetail />
       </div>
     );
