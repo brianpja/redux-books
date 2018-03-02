@@ -7,6 +7,10 @@ import AddBook from '../containers/add-book';
 
 
 export default class App extends Component {
+  componentDidMount() {
+    console.log(this.props)
+  }
+
   render() {
     return (
       <div>

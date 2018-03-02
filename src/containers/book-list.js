@@ -5,6 +5,10 @@ import { bindActionCreators } from 'redux';
 
 class BookList extends Component {
   renderList() {
+    if (!this.props.books) {
+      return <div>Loading...</div>
+    }
+    
     return this.props.books.map((book) => {
       return (
         <li
