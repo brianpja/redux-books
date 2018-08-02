@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectBook } from '../actions/index';
+import { selectBook, deleteBook } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class BookList extends Component {
@@ -8,18 +8,20 @@ class BookList extends Component {
     if (!this.props.books) {
       return <div>Loading...</div>
     }
-    
+
     return this.props.books.map((book) => {
       return (
-        <li
-          key={book.title}
-          onClick={() => {
-            this.props.selectBook(book);
-            }
-          }
-          className="list-group-item">
-          {book.title}
-        </li>
+         <div className="list-group-item book-container"
+            key={book.title}>
+            <div
+              onClick={() => { this.props.selectBook(book); } }>
+              {book.title}
+            </div>
+            <button
+                onClick={() => {this.props.deleteBook(book); } }>
+                delete
+            </button>
+        </div>
       );
     });
   }
@@ -47,7 +49,7 @@ function mapDispatchToProps(dispatch) {
   //value in object that is passed in references the
   //action creator 'selectBook'. makes it available in BookList as
   //prop 'this.props.selectBook'
-  return bindActionCreators({ selectBook: selectBook }, dispatch)
+  return bindActionCreators({ selectBook: selectBook, deleteBook: deleteBook }, dispatch)
 }
 
 //connect function glues this function to the component to create

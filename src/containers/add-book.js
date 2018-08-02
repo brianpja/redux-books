@@ -28,7 +28,7 @@ class AddBook extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({addBook: addBook}, dispatch);
+  return bindActionCreators({ addBook }, dispatch);
 }
 
 

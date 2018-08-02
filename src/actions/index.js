@@ -16,3 +16,11 @@ export function addBook(book = null) {
     payload: book
   };
 }
+
+export function deleteBook(book) {
+    console.log('delete it');
+    return {
+        type: 'DELETE_BOOK',
+        payload: book
+    }
+}

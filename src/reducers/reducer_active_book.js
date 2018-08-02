@@ -5,6 +5,11 @@ export default function(state = null, action) {
   switch(action.type) {
     case 'BOOK_SELECTED':
       return action.payload;
+
+    case 'DELETE_BOOK':
+        if (action.payload === state) {
+            return null;
+        }
   }
   return state;
 }
