@@ -1,24 +1,24 @@
 export default function(state = null, action) {
     console.log('this is my state: ', state)
   const books = [
-    {title: 'JavaScript', pages: 101},
-    {title: 'Harry Potter', pages: 512},
-    {title: 'The Dark Tower', pages: 640},
-    {title: 'Eloquent Ruby', pages: 28}
+    {id: 1, title: 'JavaScript', pages: 101},
+    {id: 2, title: 'Harry Potter', pages: 512},
+    {id: 3, title: 'The Dark Tower', pages: 640},
+    {id: 4, title: 'Eloquent Ruby', pages: 28}
   ];
 
   switch(action.type) {
     case 'ADD_BOOK':
-      // console.log('action: ', action.payload)
-      // console.log(state);
+        const lastId = state[state.length - 1].id;
+        console.log('lastId', lastId);
+        const newId = lastId++;
+        const newBook = action.payload;
+        newBook.id = newId;
+      return state.concat(newBook);
 
-      return state.concat(action.payload);
     case 'DELETE_BOOK':
-        // console.log(action.payload);
         const book = action.payload;
         const index = state.indexOf(book);
-        // console.log(books);
-        console.log(index);
         const start = state.slice(0, index);
         const end = state.slice(index + 1);
         return start.concat(end);

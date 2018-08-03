@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { selectBook, deleteBook } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
@@ -10,6 +12,7 @@ class BookList extends Component {
     }
 
     return this.props.books.map((book) => {
+        const link = `/edit/${book.title}`
       return (
          <div className="list-group-item book-container"
             key={book.title}>
@@ -17,10 +20,16 @@ class BookList extends Component {
               onClick={() => { this.props.selectBook(book); } }>
               {book.title}
             </div>
-            <button
-                onClick={() => {this.props.deleteBook(book); } }>
-                delete
-            </button>
+            <div>
+                <Link
+                    to={link}>
+                    Edit
+                </Link>
+                <button
+                    onClick={() => {this.props.deleteBook(book); } }>
+                    delete
+                </button>
+            </div>
         </div>
       );
     });

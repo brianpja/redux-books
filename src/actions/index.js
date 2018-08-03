@@ -10,6 +10,7 @@ export function selectBook(book) {
 export function addBook(book = null) {
   console.log('adding');
   console.log('book', book)
+  console.log('this: ', this);
 
   return {
     type: 'ADD_BOOK',

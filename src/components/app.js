@@ -13,7 +13,6 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <div>Brian is smart</div>
         <BookList />
         <AddBook />
         <BookDetail />

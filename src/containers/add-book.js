@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 
 class AddBook extends Component {
 
-
   render() {
     return (
       <div>
@@ -16,6 +15,8 @@ class AddBook extends Component {
             title: e.target.title.value,
             pages: e.target.pages.value
            })
+           e.target.title.value = '';
+           e.target.pages.value = '';
           }
         }>
           <input name="title" placeholder="Title" />
