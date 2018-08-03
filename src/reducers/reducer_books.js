@@ -1,5 +1,4 @@
 export default function(state = null, action) {
-    console.log('this is my state: ', state)
   const books = [
     {id: 1, title: 'JavaScript', pages: 101},
     {id: 2, title: 'Harry Potter', pages: 512},
@@ -10,8 +9,7 @@ export default function(state = null, action) {
   switch(action.type) {
     case 'ADD_BOOK':
         const lastId = state[state.length - 1].id;
-        console.log('lastId', lastId);
-        const newId = lastId++;
+        const newId = lastId + 1;
         const newBook = action.payload;
         newBook.id = newId;
       return state.concat(newBook);

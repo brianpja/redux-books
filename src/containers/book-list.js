@@ -12,16 +12,17 @@ class BookList extends Component {
     }
 
     return this.props.books.map((book) => {
-        const link = `/edit/${book.title}`
+        const link = `/edit/${book.id}`
       return (
          <div className="list-group-item book-container"
-            key={book.title}>
+            key={book.id}>
             <div
               onClick={() => { this.props.selectBook(book); } }>
               {book.title}
             </div>
             <div>
                 <Link
+                    className="link"
                     to={link}>
                     Edit
                 </Link>

@@ -6,17 +6,20 @@ import { Link } from 'react-router-dom';
 import {  } from '../actions/index';
 
 class EditBook extends Component {
-  renderList() {
 
+  getBook() {
+      for (const book of this.props.books) {
+          if (book.id == this.props.match.params.id) return book;
+      }
   }
 
   render() {
-      console.log(this.props)
+    const book = this.getBook();
 
     return (
       <div>
-        <div>Edit the details of this book</div>
-        <Link to='/'>Back to Home</Link>
+        <div>Edit the details of {book.title}</div>
+        <Link className="link" to='/'>Back to Home</Link>
     </div>
     );
   }
@@ -24,9 +27,7 @@ class EditBook extends Component {
 
 function mapStateToProps(state) {
   //what is returned will be props inside BookList
-  return {
-    bookToEdit: state.bookToEdit
-  };
+  return state;
 }
 
 //this function returns into props of bookList container

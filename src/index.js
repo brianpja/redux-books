@@ -15,9 +15,9 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
         <div>
-            <span>Brian is smart</span>
+            <span>Header: Brian is smart</span>
             <Switch>
-                <Route path='/edit/:title' component={EditBook} />
+                <Route path='/edit/:id' component={EditBook} />
                 <Route path='/' component={App} />
             </Switch>
         </div>
