@@ -4,6 +4,13 @@ import { deleteBook, closeModal } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class ConfirmationModal extends Component {
+    overlayClick(e, obj) {
+        console.log('overlay click');
+        console.log('e target: ', e.target)
+        console.log('current target: ', e.currentTarget);
+        if (e.target === e.currentTarget) this.props.closeModal(obj);
+    }
+
     handleConfirm(obj) {
         this.props.closeModal(obj);
         this.props.deleteBook(obj);
@@ -11,12 +18,12 @@ class ConfirmationModal extends Component {
 
     renderModals() {
         console.log('state in modal comp: ', this.props)
-        if (!this.props.modals || !this.props.modals.length) return <div>No Modal</div>;
+
         return this.props.modals.map((obj, i) => {
                 return (
-                    <div key={i} className="overlay">
+                    <div key={i} className="overlay" onClick={(e) => {this.overlayClick(e, obj)}}>
                         <div className="my-modal">
-                            <p>Are you sure you want to delete {obj.title}?</p>
+                            <span>Are you sure you want to delete {obj.title}?</span>
                             <button onClick={() => {this.handleConfirm(obj)}}>Confirm</button>
                             <button onClick={() => {this.props.closeModal(obj)}}>Cancel</button>
                         </div>
@@ -26,6 +33,7 @@ class ConfirmationModal extends Component {
     }
 
   render() {
+      if (!this.props.modals || !this.props.modals.length) return <div></div>;
       return (
                  <div>
                     {this.renderModals()}
