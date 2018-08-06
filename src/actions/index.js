@@ -25,3 +25,19 @@ export function deleteBook(book) {
         payload: book
     }
 }
+
+export function openModal(obj) {
+    console.log('open modal obj: ', obj);
+    return {
+        type: 'OPEN_MODAL',
+        payload: obj,
+    }
+}
+
+export function closeModal(obj) {
+    console.log('close modal obj: ', obj);
+    return {
+        type: 'CLOSE_MODAL',
+        payload: obj
+    }
+}

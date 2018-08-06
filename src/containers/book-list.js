@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { selectBook, deleteBook } from '../actions/index';
+import { selectBook, deleteBook, openModal } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class BookList extends Component {
@@ -27,7 +27,7 @@ class BookList extends Component {
                     Edit
                 </Link>
                 <button
-                    onClick={() => {this.props.deleteBook(book); } }>
+                    onClick={() => { this.props.openModal(book); } }>
                     delete
                 </button>
             </div>
@@ -59,7 +59,7 @@ function mapDispatchToProps(dispatch) {
   //value in object that is passed in references the
   //action creator 'selectBook'. makes it available in BookList as
   //prop 'this.props.selectBook'
-  return bindActionCreators({ selectBook: selectBook, deleteBook: deleteBook }, dispatch)
+  return bindActionCreators({ selectBook: selectBook, deleteBook: deleteBook, openModal }, dispatch)
 }
 
 //connect function glues this function to the component to create

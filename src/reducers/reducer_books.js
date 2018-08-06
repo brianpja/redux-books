@@ -15,11 +15,14 @@ export default function(state = null, action) {
       return state.concat(newBook);
 
     case 'DELETE_BOOK':
-        const book = action.payload;
-        const index = state.indexOf(book);
-        const start = state.slice(0, index);
-        const end = state.slice(index + 1);
-        return start.concat(end);
+        // const book = action.payload;
+        // const index = state.indexOf(book);
+        // const start = state.slice(0, index);
+        // const end = state.slice(index + 1);
+        // return start.concat(end);
+        return state.filter((book) => {
+            return book.id !== action.payload.id;
+        })
   }
   if (state) return state;
   return books;
