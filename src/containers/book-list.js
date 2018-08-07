@@ -12,6 +12,7 @@ class BookList extends Component {
     }
 
     return this.props.books.map((book) => {
+        if (!book.show) return;
         const link = `/edit/${book.id}`
       return (
          <div className="list-group-item book-container"

@@ -2,20 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { filterList } from '../actions/index';
+
 class SearchBar extends Component {
     render() {
         return (
             <div>
                 <input
                     placeholder="search by title"
-                    onChange={(e) => console.log(e.target.value)} />
+                    onChange={(e) => this.props.filterList(e.target.value)} />
             </div>
         )
     }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({  }, dispatch);
+  return bindActionCreators({ filterList }, dispatch);
 }
 
 

@@ -36,7 +36,6 @@ export function closeModal(obj) {
 }
 
 export function updateBook(book) {
-    console.log('book to be updated: ', book)
     return {
         type: 'UPDATE_BOOK',
         payload: book
@@ -55,4 +54,12 @@ export function moveDown(book) {
         type: 'MOVE_DOWN',
         payload: book
     }
+}
+
+export function filterList(str) {
+    str = str.toLowerCase();
+    return {
+        type: 'FILTER_LIST',
+        payload: str
+    };
 }

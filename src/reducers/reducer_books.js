@@ -1,17 +1,19 @@
 export default function(state = null, action) {
   const books = [
-    {id: 1, title: 'JavaScript', pages: 101},
-    {id: 2, title: 'Harry Potter', pages: 512},
-    {id: 3, title: 'The Dark Tower', pages: 640},
-    {id: 4, title: 'Eloquent Ruby', pages: 28}
+    {id: 1, title: 'JavaScript', pages: 101, show: true},
+    {id: 2, title: 'Harry Potter', pages: 512, show: true},
+    {id: 3, title: 'The Dark Tower', pages: 640, show: true},
+    {id: 4, title: 'Eloquent Ruby', pages: 28, show: true}
   ];
 
   switch(action.type) {
+
     case 'ADD_BOOK':
         const lastId = state[state.length - 1].id;
         const newId = lastId + 1;
         const newBook = action.payload;
         newBook.id = newId;
+        newBook.show = true;
       return state.concat(newBook);
 
     case 'DELETE_BOOK':
@@ -31,7 +33,6 @@ export default function(state = null, action) {
         });
 
     case 'MOVE_UP':
-        console.log('move up');
         if (state.indexOf(action.payload) === 0) return state;
         let newState = Object.assign([], state);
         const currentIndex = newState.indexOf(action.payload);
@@ -46,6 +47,18 @@ export default function(state = null, action) {
         downState[currentDownIndex] = downState[currentDownIndex + 1];
         downState[currentDownIndex + 1] = action.payload;
         return downState;
+
+    case 'FILTER_LIST':
+        return state.map((item) => {
+            const str = item.title.toLowerCase();
+            if (!str.includes(action.payload)) {
+                item.show = false;
+                return item;
+            } else {
+                item.show = true;
+                return item;
+            }
+        })
   }
   if (state) return state;
   return books;

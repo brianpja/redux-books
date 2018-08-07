@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { addBook } from '../actions/index.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { addBook } from '../actions/index.js';
 
 class AddBook extends Component {
 
