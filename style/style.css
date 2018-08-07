@@ -30,3 +30,23 @@
     align-items: center;
     padding: 12px;
 }
+
+.link-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.move-buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.main-wrapper {
+    display: flex;
+}

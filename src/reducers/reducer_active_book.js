@@ -10,6 +10,12 @@ export default function(state = null, action) {
         if (action.payload === state) {
             return null;
         }
+    case 'UPDATE_BOOK':
+        if(state) {
+            if (action.payload.id === state.id) {
+                return action.payload;
+            }    
+        }
   }
   return state;
 }

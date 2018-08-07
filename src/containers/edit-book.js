@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 
-import {  } from '../actions/index';
+import { updateBook } from '../actions/index';
 
 class EditBook extends Component {
 
@@ -15,12 +15,23 @@ class EditBook extends Component {
 
   render() {
     const book = this.getBook();
-
     return (
-      <div>
-        <div>Edit the details of {book.title}</div>
-        <Link className="link" to='/'>Back to Home</Link>
-    </div>
+        <div>
+            <div>Edit the details of {book.title}</div>
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                this.props.updateBook({ id: book.id, title: e.target.newTitle.value, pages: e.target.newPages.value })
+                this.props.history.push('/');
+                }
+            }>
+                <label htmlFor="newTitle">Title</label>
+                <input id="newTitle" name="newTitle" defaultValue={book.title} />
+                <label htmlFor="newPages">Number of Pages</label>
+                <input id="newPages" name="newPages" defaultValue={book.pages} />
+                <button type="submit">Save</button>
+            </form>
+            <Link className="link" to='/'>Back to Home</Link>
+        </div>
     );
   }
 }
@@ -37,7 +48,7 @@ function mapDispatchToProps(dispatch) {
   //value in object that is passed in references the
   //action creator 'selectBook'. makes it available in BookList as
   //prop 'this.props.selectBook'
-  return bindActionCreators({ }, dispatch)
+  return bindActionCreators({ updateBook }, dispatch)
 }
 
 //connect function glues this function to the component to create

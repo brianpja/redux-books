@@ -8,10 +8,6 @@ export function selectBook(book) {
 }
 
 export function addBook(book = null) {
-  console.log('adding');
-  console.log('book', book)
-  console.log('this: ', this);
-
   return {
     type: 'ADD_BOOK',
     payload: book
@@ -19,7 +15,6 @@ export function addBook(book = null) {
 }
 
 export function deleteBook(book) {
-    console.log('delete it');
     return {
         type: 'DELETE_BOOK',
         payload: book
@@ -27,7 +22,6 @@ export function deleteBook(book) {
 }
 
 export function openModal(obj) {
-    console.log('open modal obj: ', obj);
     return {
         type: 'OPEN_MODAL',
         payload: obj,
@@ -35,9 +29,30 @@ export function openModal(obj) {
 }
 
 export function closeModal(obj) {
-    console.log('close modal obj: ', obj);
     return {
         type: 'CLOSE_MODAL',
         payload: obj
+    }
+}
+
+export function updateBook(book) {
+    console.log('book to be updated: ', book)
+    return {
+        type: 'UPDATE_BOOK',
+        payload: book
+    }
+}
+
+export function moveUp(book) {
+    return {
+        type: 'MOVE_UP',
+        payload: book
+    }
+}
+
+export function moveDown(book) {
+    return {
+        type: 'MOVE_DOWN',
+        payload: book
     }
 }

@@ -22,7 +22,30 @@ export default function(state = null, action) {
         // return start.concat(end);
         return state.filter((book) => {
             return book.id !== action.payload.id;
-        })
+        });
+
+    case 'UPDATE_BOOK':
+        return state.map((book) => {
+            if (book.id === action.payload.id) return action.payload;
+            return book;
+        });
+
+    case 'MOVE_UP':
+        console.log('move up');
+        if (state.indexOf(action.payload) === 0) return state;
+        let newState = Object.assign([], state);
+        const currentIndex = newState.indexOf(action.payload);
+        newState[currentIndex] = newState[currentIndex - 1];
+        newState[currentIndex - 1] = action.payload;
+        return newState;
+
+    case 'MOVE_DOWN':
+        if (state.indexOf(action.payload) === state.length - 1) return state;
+        let downState = Object.assign([], state);
+        const currentDownIndex = downState.indexOf(action.payload);
+        downState[currentDownIndex] = downState[currentDownIndex + 1];
+        downState[currentDownIndex + 1] = action.payload;
+        return downState;
   }
   if (state) return state;
   return books;

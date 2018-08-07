@@ -5,9 +5,6 @@ import { bindActionCreators } from 'redux';
 
 class ConfirmationModal extends Component {
     overlayClick(e, obj) {
-        console.log('overlay click');
-        console.log('e target: ', e.target)
-        console.log('current target: ', e.currentTarget);
         if (e.target === e.currentTarget) this.props.closeModal(obj);
     }
 
@@ -17,8 +14,6 @@ class ConfirmationModal extends Component {
     }
 
     renderModals() {
-        console.log('state in modal comp: ', this.props)
-
         return this.props.modals.map((obj, i) => {
                 return (
                     <div key={i} className="overlay" onClick={(e) => {this.overlayClick(e, obj)}}>
