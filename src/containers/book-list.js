@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 
 import { selectBook, deleteBook, openModal, moveUp, moveDown } from '../actions/index';
-import { bindActionCreators } from 'redux';
+import { store } from '../index';
 
 class BookList extends Component {
   renderList() {

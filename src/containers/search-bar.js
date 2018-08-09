@@ -11,6 +11,7 @@ class SearchBar extends Component {
                 <input
                     placeholder="search by title"
                     onChange={(e) => this.props.filterList(e.target.value)} />
+                <img src="https://picsum.photos/40/40" />
             </div>
         )
     }

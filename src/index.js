@@ -9,10 +9,13 @@ import EditBook from './containers/edit-book';
 import App from './components/app';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
+//these do the same thing (create a store with middleware) using different syntax
+// const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
+const store = createStore(reducers, applyMiddleware(logger));
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  // <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <BrowserRouter>
         <div>
             <span>Header: Brian is smart</span>
