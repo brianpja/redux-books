@@ -21,7 +21,7 @@ ReactDOM.render(
             <span>Header: Brian is smart</span>
             <Switch>
                 <Route path='/edit/:id' component={EditBook} />
-                <Route path='/' component={App} />
+                <Route path='' component={App} />
             </Switch>
         </div>
     </BrowserRouter>

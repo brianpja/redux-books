@@ -20,7 +20,11 @@ class EditBook extends Component {
             <div>Edit the details of {book.title}</div>
             <form onSubmit={(e) => {
                 e.preventDefault();
-                this.props.updateBook({ id: book.id, title: e.target.newTitle.value, pages: e.target.newPages.value })
+                const newBook = Object.assign({}, book, {
+                    title: e.target.newTitle.value,
+                    pages: e.target.newPages.value
+                })
+                this.props.updateBook(newBook);
                 this.props.history.push('/');
                 }
             }>
