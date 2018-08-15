@@ -10,6 +10,7 @@ class SearchBar extends Component {
             <div>
                 <input
                     placeholder="search by title"
+                    value={this.props.searchVal}
                     onChange={(e) => this.props.updateSearch(e.target.value)} />
                 <img src="https://picsum.photos/40/40" />
             </div>
@@ -17,9 +18,13 @@ class SearchBar extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return { searchVal: state.search }
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ updateSearch }, dispatch);
 }
 
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
