@@ -1,16 +1,28 @@
-export default function(state = null, action) {
-  const books = [
+const books = [
     {id: 1, title: 'JavaScript', pages: 101, show: true},
     {id: 2, title: 'Harry Potter', pages: 512, show: true},
     {id: 3, title: 'The Dark Tower', pages: 640, show: true},
     {id: 4, title: 'Eloquent Ruby', pages: 28, show: true}
-  ];
+];
+
+function findHighestId(array) {
+    let retId = null;
+    for (const item of array) {
+        if (!retId || retId < item.id) {
+            retId = item.id;
+        }
+    }
+    return retId;
+}
+
+
+export default function(state = books, action) {
 
   switch(action.type) {
 
     case 'ADD_BOOK':
-        const lastId = state[state.length - 1].id;
-        const newId = lastId + 1;
+        const highestId = findHighestId(state);
+        const newId = highestId + 1;
         const newBook = action.payload;
         newBook.id = newId;
         newBook.show = true;
@@ -60,6 +72,5 @@ export default function(state = null, action) {
             }
         })
   }
-  if (state) return state;
-  return books;
+  return state;
 }

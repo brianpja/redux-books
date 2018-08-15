@@ -53,8 +53,10 @@ class BookList extends Component {
 
 function mapStateToProps(state) {
   //what is returned will be props inside BookList
+  console.log('mapstate: ', state)
   return {
-    books: state.books
+    books: state.books.present
+    // books: state.books
   };
 }
 
@@ -65,7 +67,7 @@ function mapDispatchToProps(dispatch) {
   //value in object that is passed in references the
   //action creator 'selectBook'. makes it available in BookList as
   //prop 'this.props.selectBook'
-  return bindActionCreators({ selectBook: selectBook, deleteBook: deleteBook, openModal, moveUp, moveDown }, dispatch)
+  return bindActionCreators({selectBook: selectBook, deleteBook: deleteBook, openModal, moveUp, moveDown }, dispatch)
 }
 
 //connect function glues this function to the component to create

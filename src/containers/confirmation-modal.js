@@ -39,6 +39,7 @@ class ConfirmationModal extends Component {
 
 function mapStateToProps(state) {
   //what is returned will be props inside this component
+  // return state.present;
   return state;
 }
 

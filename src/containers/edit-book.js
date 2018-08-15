@@ -8,7 +8,7 @@ import { updateBook } from '../actions/index';
 class EditBook extends Component {
 
   getBook() {
-      for (const book of this.props.books) {
+      for (const book of this.props.books.present) {
           if (book.id == this.props.match.params.id) return book;
       }
   }
@@ -42,6 +42,7 @@ class EditBook extends Component {
 
 function mapStateToProps(state) {
   //what is returned will be props inside BookList
+  // return state.present;
   return state;
 }
 

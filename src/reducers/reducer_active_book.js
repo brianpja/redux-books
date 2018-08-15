@@ -7,15 +7,16 @@ export default function(state = null, action) {
       return action.payload;
 
     case 'DELETE_BOOK':
-        if (action.payload === state) {
+        console.log('active book state', state);
+        if (action.payload == state) {
             return null;
         }
     case 'UPDATE_BOOK':
         if(state) {
             if (action.payload.id === state.id) {
                 return action.payload;
-            }    
+            }
         }
-  }
+    }
   return state;
 }
