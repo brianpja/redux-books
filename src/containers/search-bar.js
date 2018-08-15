@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { filterList } from '../actions/index';
+import { updateSearch } from '../actions/index';
 
 class SearchBar extends Component {
     render() {
@@ -10,7 +10,7 @@ class SearchBar extends Component {
             <div>
                 <input
                     placeholder="search by title"
-                    onChange={(e) => this.props.filterList(e.target.value)} />
+                    onChange={(e) => this.props.updateSearch(e.target.value)} />
                 <img src="https://picsum.photos/40/40" />
             </div>
         )
@@ -18,7 +18,7 @@ class SearchBar extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ filterList }, dispatch);
+  return bindActionCreators({ updateSearch }, dispatch);
 }
 
 

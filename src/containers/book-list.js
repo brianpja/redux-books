@@ -7,20 +7,30 @@ import { selectBook, deleteBook, openModal, moveUp, moveDown } from '../actions/
 import { store } from '../index';
 
 class BookList extends Component {
+
   renderList() {
     if (!this.props.books) {
       return <div>Loading...</div>
     }
 
-    return this.props.books.map((book) => {
-        if (!book.show) return;
-        const link = `/edit/${book.id}`
+    const filteredBooks = this.props.books.filter((book) => {
+        const title = book.title.toLowerCase();
+        return (title.includes(this.props.search));
+    })
+
+    if (!filteredBooks.length) {
+        return <div>No books matched your search</div>
+    }
+
+    return filteredBooks.map((book, i) => {
+
+        const link = `/edit/${book.id}`;
       return (
          <div className="list-group-item book-container"
             key={book.id}>
-            <div
-              onClick={() => { this.props.selectBook(book); } }>
-              {book.title}
+            <div className="book-title-wrapper">
+              <span>{book.title}</span>
+              <span onClick={() => { this.props.selectBook(book); } }>see details</span>
             </div>
             <div className="link-wrapper">
                 <Link
@@ -33,8 +43,8 @@ class BookList extends Component {
                     delete
                 </button>
                 <div className="move-buttons-wrapper">
-                    <button onClick={() => this.props.moveUp(book)}>Up</button>
-                    <button onClick={() => this.props.moveDown(book)}>Down</button>
+                    <button disabled={ i === 0} onClick={() => this.props.moveUp(book)}>Up</button>
+                    <button disabled={ i === filteredBooks.length - 1 } onClick={() => this.props.moveDown(book)}>Down</button>
                 </div>
             </div>
         </div>
@@ -45,17 +55,22 @@ class BookList extends Component {
   render() {
     return (
       <ul className="list-group col-sm-12">
-        {this.renderList()}
+        { this.renderList() }
       </ul>
     );
   }
+
 }
 
 function mapStateToProps(state) {
   //what is returned will be props inside BookList
-  console.log('mapstate: ', state)
+  // const books = state.books.present.map((item) => {
+  //     item.show = true;
+  //     return item;
+  // })
   return {
-    books: state.books.present
+    books: state.books.present,
+    search: state.search
     // books: state.books
   };
 }

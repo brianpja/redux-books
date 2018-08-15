@@ -1,8 +1,8 @@
 const books = [
-    {id: 1, title: 'JavaScript', pages: 101, show: true},
-    {id: 2, title: 'Harry Potter', pages: 512, show: true},
-    {id: 3, title: 'The Dark Tower', pages: 640, show: true},
-    {id: 4, title: 'Eloquent Ruby', pages: 28, show: true}
+    {id: 1, title: 'JavaScript', pages: 101},
+    {id: 2, title: 'Harry Potter', pages: 512},
+    {id: 3, title: 'The Dark Tower', pages: 640},
+    {id: 4, title: 'Eloquent Ruby', pages: 28}
 ];
 
 function findHighestId(array) {
@@ -60,17 +60,17 @@ export default function(state = books, action) {
         downState[currentDownIndex + 1] = action.payload;
         return downState;
 
-    case 'FILTER_LIST':
-        return state.map((item) => {
-            const str = item.title.toLowerCase();
-            if (!str.includes(action.payload)) {
-                item.show = false;
-                return item;
-            } else {
-                item.show = true;
-                return item;
-            }
-        })
+    // case 'FILTER_LIST':
+    //     return state.map((item) => {
+    //         const str = item.title.toLowerCase();
+    //         if (!str.includes(action.payload)) {
+    //             item.show = false;
+    //             return item;
+    //         } else {
+    //             item.show = true;
+    //             return item;
+    //         }
+    //     })
   }
   return state;
 }

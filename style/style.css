@@ -54,3 +54,20 @@
 .red {
     background-color: red;
 }
+
+.book-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: normal;
+}
+
+.book-title-wrapper span:last-child {
+    font-size: 13px;
+    color: darkgrey;
+    cursor: pointer;
+}
+
+.book-title-wrapper span:last-child:hover {
+    font-weight: 700;
+}

@@ -56,10 +56,10 @@ export function moveDown(book) {
     }
 }
 
-export function filterList(str) {
+export function updateSearch(str) {
     str = str.toLowerCase();
     return {
-        type: 'FILTER_LIST',
+        type: 'UPDATE_SEARCH',
         payload: str
     };
 }
